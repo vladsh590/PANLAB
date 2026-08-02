@@ -91,6 +91,8 @@ li{list-style:none}
 /* иконки-логотипы соцсетей нарисованы заливкой, а не обводкой.
    Правило обязано идти после .ico — иначе оно им перебивается. */
 .ico--fill{fill:currentColor;stroke:none}
+/* иконка нарисована на сетке 64×64 — линии нужно утолщить */
+.ico--pay{stroke-width:3.4}
 .btn--cart.is-bump{animation:bump .4s}
 @keyframes bump{40%{transform:scale(1.09)}}
 
@@ -419,7 +421,7 @@ li{list-style:none}
 
 /* ── подвал ──────────────────────────────── */
 .ftr{border-top:1px solid var(--line);background:var(--bg-2);padding-top:clamp(48px,6vw,72px)}
-.ftr__in{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:36px}
+.ftr__in{display:grid;grid-template-columns:1.6fr repeat(2,1fr);gap:36px}
 .ftr__brand img{height:38px;margin-bottom:18px}
 .ftr__brand p{color:var(--muted);font-size:.92rem;max-width:38ch}
 .ftr__col{display:flex;flex-direction:column;gap:11px;font-size:.93rem}
@@ -580,10 +582,18 @@ li{list-style:none}
   .cartbar{display:flex}
 
   /* 1. способы оплаты — сеткой 2×2 */
-  .pay{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:stretch}
+  .pay{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .pay span{grid-column:1/-1}
-  .pay b{justify-content:center;padding:11px 10px;font-size:.84rem}
+  .pay b{
+    display:flex;align-items:center;justify-content:center;gap:7px;
+    min-height:46px;padding:10px 8px;font-size:.8rem;
+    white-space:nowrap;                 /* не даём тексту ломаться на две строки */
+  }
   .pay b .ico{width:15px;height:15px}
+
+  /* агрегаторы — в одну строку */
+  .agg__row{grid-template-columns:1fr 1fr;display:grid;gap:10px}
+  .agg__btn{justify-content:center;gap:7px;padding:14px 8px;font-size:.86rem;white-space:nowrap}
 
   /* 3. ночной блок: эквалайзер под текстом, компактнее */
   .night{gap:24px}
@@ -595,10 +605,11 @@ li{list-style:none}
   /* 4. кнопки первого экрана — в одну строку */
   .hero__cta{flex-wrap:nowrap;gap:10px}
   .hero__cta .btn{flex:1 1 0;min-width:0;padding-inline:10px;font-size:.92rem}
-  .agg__row{grid-template-columns:1fr}
-  .agg__card img{height:110px}
   .ftr__in{grid-template-columns:1fr}
+  /* значение под подписью — как у «Доставки», и всё выровнено по левому краю */
+  .contacts dl>div{flex-direction:column;align-items:flex-start;gap:5px;padding:14px 18px}
   .contacts dd{text-align:left}
+  .socials{justify-content:flex-start;gap:16px 18px}
 }
 
 @media (prefers-reduced-motion:reduce){
