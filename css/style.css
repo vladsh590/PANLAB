@@ -539,6 +539,10 @@ li{list-style:none}
 @media (max-width:720px){
   body{font-size:16px}
   :root{--hdr-h:64px}
+  /* межстрочный 1.02 на десктопе нормален, но на мобильном строки
+     заголовков в две-три строки сливаются — особенно с ударением в «ПАРИ́М» */
+  h1,h2{line-height:1.18}
+  h3{line-height:1.2}
   .hide-sm{display:none}
   .only-sm{display:inline}
   .hdr__strip-in{font-size:.78rem}
